@@ -29,6 +29,7 @@ module RestAssured
       private
 
         def toggle_active
+          self.fullpath = nil if fullpath.blank?
           ne = id ? '!=' : 'IS NOT'
 
           if active && Double.where("fullpath = ? AND verb = ? AND active = ? AND id #{ne} ?", fullpath, verb, true, id).exists?
